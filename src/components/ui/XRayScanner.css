@@ -1,0 +1,38 @@
+.xray-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #002aff;
+    /* hoodie blue */
+}
+
+/* Background layer */
+.scroll-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Foreground image */
+.xray-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+
+    max-height: 95vh;
+    max-width: 80vw;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
