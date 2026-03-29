@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback, useState } from "react";
 import Lenis from "lenis";
-import INTROVIDEO from "../SRC/assets/INTROVIDEO.mp4";
+import INTROVIDEO from "./assets/INTROVIDEO.mp4";
 import "./App.css";
 
 import Hero from "./components/ui/XRayHover";
@@ -8,7 +8,7 @@ import Navbar from "./components/ui/Navbar/CardNav";
 import Intro from "./intro"
 
 
-import logo from "../SRC/assets/Navbaricon/LOGO.png";
+import logo from "./assets/Navbaricon/LOGO.png";
 
 
 function App() {
