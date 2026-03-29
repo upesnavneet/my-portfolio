@@ -1,4 +1,6 @@
 import { useEffect, useRef, useCallback, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import INTROVIDEO from "./assets/INTROVIDEO.mp4";
 import "./App.css";
@@ -6,9 +8,12 @@ import "./App.css";
 import Hero from "./components/ui/XRayHover";
 import Navbar from "./components/ui/Navbar/CardNav";
 import Intro from "./intro"
+import Timeline from './timeline';
 
 
 import logo from "./assets/Navbaricon/LOGO.png";
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 function App() {
@@ -60,12 +65,16 @@ function App() {
     });
     lenisRef.current = lenis;
 
+    lenis.on('scroll', ScrollTrigger.update);
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
+
+    ScrollTrigger.refresh();
 
     return () => {
       lenis.destroy();
@@ -148,6 +157,7 @@ function App() {
 
       <div className="content-above">
         <Intro />
+        <Timeline />
       </div>
     </>
   );
