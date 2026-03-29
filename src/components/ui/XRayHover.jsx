@@ -7,7 +7,7 @@ export default function MyComponent() {
     <div className="xray-wrapper">
       <div className="scroll-bg">
         <ScrollVelocity
-          texts={['NAVNEET KUMAR • DATA SCIENCE ENTHUSIAST •', 'WEB DEVELOPER • CREATIVE DESIGNER']}
+          texts={['NAVNEET KUMAR • PORTFOLIO •', 'WEB DEVELOPER • DATA SCIENCE ENTHUSIAST •']}
           velocity={100}
           className="custom-scroll-text"
           stiffness={400}

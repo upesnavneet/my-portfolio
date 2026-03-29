@@ -4,9 +4,9 @@ body,
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #006aff;
+  min-height: 100%;
+  background-color: #000;
+  overflow-x: hidden;
 }
 
 body {
@@ -17,5 +17,93 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #036cff;
+  overflow: hidden;
+}
+
+.intro-video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+
+.intro-video-overlay.fade-out {
+  opacity: 0;
+}
+
+.intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-sticky-container {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.hero-card {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.content-above {
+  position: relative;
+  z-index: 1;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.nav-card-link {
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+}
+
+.nav-card-link:visited,
+.nav-card-link:active,
+.nav-card-link:hover,
+.nav-card-link:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-card-link-icon {
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
   overflow: hidden;
 }
