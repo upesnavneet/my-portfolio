@@ -106,7 +106,7 @@ function App() {
       textColor: "#fff",
       links: [
         { label: "Email", href: "mailto:kumarnavneet7765@gmail.com", ariaLabel: "Email us" },
-        { label: "Instagram", href: "https://instagram.com/navx_n", ariaLabel: "Instagram" },
+        { label: "Instagram", href: "https://instagram.com/navx._n", ariaLabel: "Instagram" },
         { label: "LinkedIn", href: "https://www.linkedin.com/in/navneetkumar-", ariaLabel: "LinkedIn" }
       ]
     }
