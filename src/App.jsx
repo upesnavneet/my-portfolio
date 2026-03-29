@@ -9,6 +9,7 @@ import Hero from "./components/ui/XRayHover";
 import Navbar from "./components/ui/Navbar/CardNav";
 import Intro from "./intro"
 import Timeline from './timeline';
+import Onoff from './onoff';
 
 
 import logo from "./assets/Navbaricon/LOGO.png";
@@ -158,6 +159,7 @@ function App() {
       <div className="content-above">
         <Intro />
         <Timeline />
+        <Onoff />
       </div>
     </>
   );
