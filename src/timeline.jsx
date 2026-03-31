@@ -84,8 +84,8 @@ const items = [
 const BackgroundElements = () => (
     <div className="bg-elements">
         <svg className="bg-svg" preserveAspectRatio="none">
-            <path d="M-100,200 Q200,50 400,300 T900,100 T1400,400 T1900,200 T2400,400 T2900,100" fill="none" stroke="#00008b" strokeWidth="2.5" />
-            <path d="M-50,250 Q250,100 450,350 T950,150 T1450,450 T1950,250 T2450,450 T2950,150" fill="none" stroke="#00008b" strokeWidth="2.5" />
+            <path d="M-100,200 Q200,50 400,300 T900,100 T1400,400 T1900,200 T2400,400 T2900,100" fill="none" stroke="currentColor" strokeWidth="2.5" />
+            <path d="M-50,250 Q250,100 450,350 T950,150 T1450,450 T1950,250 T2450,450 T2950,150" fill="none" stroke="currentColor" strokeWidth="2.5" />
         </svg>
         <div className="timeline-axis"></div>
     </div>
@@ -158,9 +158,7 @@ export default function App() {
         if (!pinContainer || !scrollContainer) return;
 
         let ctx = gsap.context(() => {
-            gsap.to(scrollContainer, {
-                x: () => -(scrollContainer.scrollWidth - window.innerWidth),
-                ease: "none",
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: pinContainer,
                     pin: true,
@@ -169,6 +167,31 @@ export default function App() {
                     end: () => "+=" + (scrollContainer.scrollWidth - window.innerWidth)
                 }
             });
+
+            tl.to(scrollContainer, {
+                x: () => -(scrollContainer.scrollWidth - window.innerWidth),
+                ease: "none",
+                duration: 1,
+            }, 0);
+
+            tl.to(pinContainer, {
+                backgroundColor: "#E8DBB3",
+                color: "#000000",
+                ease: "none",
+                duration: 1,
+            }, 0);
+
+            tl.to(".card-overlay", {
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                ease: "none",
+                duration: 0.3,
+            }, 0.7);
+
+            tl.to(".card-image", {
+                filter: "grayscale(100%)",
+                ease: "none",
+                duration: 0.3,
+            }, 0.7);
         }, pinRef);
 
         return () => ctx.revert();
@@ -199,7 +222,7 @@ export default function App() {
           left: 0;
           width: 5000px;
           height: 1px;
-          background: linear-gradient(to right, transparent, rgba(0, 0, 139, 0.4), transparent);
+          background: linear-gradient(to right, transparent, currentColor, transparent);
           transform: translateY(-50%);
         }
 
@@ -225,7 +248,7 @@ export default function App() {
           font-size: 13px;
           font-weight: 900;
           letter-spacing: 0.3em;
-          color: #0011ff;
+          color: currentColor;
           margin-bottom: 4px;
         }
 
@@ -233,13 +256,13 @@ export default function App() {
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.1em;
-          color: rgba(0, 17, 255, 0.8);
+          color: currentColor; opacity: 0.8;
           text-transform: uppercase;
           transition: color 0.3s ease;
         }
 
         .group:hover .title-text {
-          color: rgba(0, 17, 255, 0.6);
+          color: currentColor; opacity: 0.6;
         }
 
         .card-container {
@@ -307,45 +330,45 @@ export default function App() {
         }
 
         /* --- Replaced Tailwind Classes --- */
-        .timeline-header { position: absolute; top: 0; left: 0; width: 100%; padding: 2rem; display: flex; justify-content: space-between; align-items: flex-start; z-index: 50; mix-blend-mode: multiply; box-sizing: border-box; }
+        .timeline-header { position: absolute; top: 0; left: 0; width: 100%; padding: 2rem; display: flex; justify-content: space-between; align-items: flex-start; z-index: 50; box-sizing: border-box; }
         @media (min-width: 768px) { .timeline-header { padding: 3rem; } }
         .header-title-wrapper { display: flex; flex-direction: column; line-height: 0.8; }
-        .header-brand { color: #0011ff; font-weight: 900; font-size: 1.875rem; letter-spacing: -0.05em; text-transform: uppercase; }
+        .header-brand { color: currentColor; font-weight: 900; font-size: 1.875rem; letter-spacing: -0.05em; text-transform: uppercase; }
         .header-version { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
-        .version-text { color: rgba(0, 17, 255, 0.8); font-weight: 900; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+        .version-text { color: currentColor; opacity: 0.8; font-weight: 900; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
         .pulse-dot { width: 4px; height: 4px; border-radius: 9999px; background-color: #3b82f6; animation: customPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes customPulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
         .header-buttons { display: flex; gap: 1rem; }
         .btn-archive { background-color: #0011ff; color: white; transition: all 0.3s ease; padding: 0.5rem 1.5rem; border-radius: 0.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; font-size: 0.75rem; box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2); cursor: pointer; border: none; }
         .btn-archive:hover { background-color: #000ecb; }
         .btn-archive:active { transform: scale(0.95); }
-        .btn-menu { background-color: rgba(0, 17, 255, 0.05); transition: background-color 0.3s ease; backdrop-filter: blur(12px); padding: 0.5rem; border-radius: 0.5rem; color: #0011ff; border: 1px solid rgba(0, 17, 255, 0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .btn-menu { background-color: rgba(0, 17, 255, 0.05); transition: background-color 0.3s ease; backdrop-filter: blur(12px); padding: 0.5rem; border-radius: 0.5rem; color: currentColor; border: 1px solid rgba(0, 17, 255, 0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .btn-menu:hover { background-color: rgba(0, 17, 255, 0.1); }
         
         .scroll-track { height: 100%; width: max-content; display: flex; flex-wrap: nowrap; align-items: center; position: relative; z-index: 10; padding-left: 10vw; padding-right: 10vw; overflow: visible; }
         
         .intro-block { flex-shrink: 0; width: 450px; margin-right: 6rem; margin-bottom: 10rem; text-align: left; }
         .intro-subtitle { font-size: 11px; font-weight: 900; letter-spacing: 0.5em; text-transform: uppercase; margin-bottom: 1rem; opacity: 0.8; display: block; }
-        .intro-title { font-size: 1.875rem; color: #0011ff; line-height: 1.1; font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 2rem; margin-top: 0; }
-        .intro-highlight { color: #0011ff; font-weight: 900; letter-spacing: -0.025em; font-style: normal; }
-        .intro-divider { width: 6rem; height: 1.5px; background-color: rgba(0, 17, 255, 0.5); }
+        .intro-title { font-size: 1.875rem; color: currentColor; line-height: 1.1; font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 2rem; margin-top: 0; }
+        .intro-highlight { color: currentColor; font-weight: 900; letter-spacing: -0.025em; font-style: normal; }
+        .intro-divider { width: 6rem; height: 1.5px; background-color: currentColor; opacity: 0.5; }
         .intro-scroll-hint { margin-top: 1.5rem; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; display: block; }
         
         .gallery-item { flex-shrink: 0; position: relative; padding-left: 4rem; padding-right: 4rem; display: flex; flex-direction: column; align-items: center; cursor: default; }
         .item-text-container { margin-bottom: 1.5rem; text-align: center; }
         
         .end-block { flex-shrink: 0; width: 400px; margin-left: 5rem; display: flex; flex-direction: column; justify-content: center; }
-        .end-text-big { font-size: 8vw; font-weight: 900; letter-spacing: -0.05em; opacity: 0.25; text-transform: uppercase; line-height: 1; margin: 0; display: block; }
-        .end-text-small { font-size: 2vw; font-weight: 900; letter-spacing: 0.1em; margin-top: -1vw; margin-left: 0.25rem; display: block; opacity: 0.8; }
+        .end-text-big { font-size: 8vw; font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; line-height: 1; margin: 0; display: block; color: black; }
+        .end-text-small { font-size: 2vw; font-weight: 900; letter-spacing: 0.1em; margin-top: -1vw; margin-left: 0.25rem; display: block; color: black; }
         .end-spacer { flex-shrink: 0; width: 20vw; }
         
         .fixed-status { position: absolute; bottom: 2.5rem; left: 2.5rem; z-index: 50; font-weight: 900; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.2; }
         .fixed-pagination { position: absolute; bottom: 2.5rem; right: 2.5rem; z-index: 50; display: flex; align-items: center; gap: 1rem; }
         
         .pagination-box { display: flex; border: 1px solid rgba(0, 17, 255, 0.1); padding: 0.5rem; border-radius: 0.25rem; gap: 0.25rem; background-color: white; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
-        .pagination-number { color: #0011ff; font-weight: 700; padding: 0.25rem 1rem; border-right: 1px solid rgba(0, 17, 255, 0.1); margin: 0; display: flex; align-items: center; }
+        .pagination-number { color: currentColor; font-weight: 700; padding: 0.25rem 1rem; border-right: 1px solid rgba(0, 17, 255, 0.1); margin: 0; display: flex; align-items: center; }
         .pagination-bars { display: flex; align-items: center; padding-left: 1rem; padding-right: 1rem; gap: 0.5rem; }
-        .bar-active { width: 1.5rem; height: 0.25rem; background-color: #0011ff; border-radius: 99px; }
+        .bar-active { width: 1.5rem; height: 0.25rem; background-color: currentColor; border-radius: 99px; }
         .bar-inactive { width: 1.5rem; height: 0.25rem; background-color: rgba(0, 17, 255, 0.1); border-radius: 99px; }
         
         .bg-elements { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -382,8 +405,8 @@ export default function App() {
                 ))}
 
                 <div className="end-block">
-                    <span className="end-text-big">YET</span>
-                    <span className="end-text-small"><span style={{ color: '#ED3500' }}>UNWRITTEN</span></span>
+                    <span className="end-text-big" style={{ color: 'black' }}>YET</span>
+                    <span className="end-text-small" style={{ color: 'black' }}><span>UNWRITTEN</span></span>
                 </div>
 
                 <div className="end-spacer"></div>

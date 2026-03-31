@@ -3,68 +3,71 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 import ScrollReveal from './components/ui/ScrollReveal/ScrollReveal';
 
+import onserver from '../src/assets/me/onserver.png'
+
+
 const TopographicLines = () => (
-    <div className="oo-topographic-container">
-        <svg width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-100,200 Q150,50 400,300 T900,100 T1400,400" fill="none" stroke="#F4FFFD" strokeWidth="1" />
-            <path d="M-50,250 Q200,100 450,350 T950,150 T1450,450" fill="none" stroke="#F4FFFD" strokeWidth="1" />
-            <path d="M0,300 Q250,150 500,400 T1000,200 T1500,500" fill="none" stroke="#F4FFFD" strokeWidth="1" />
-            <path d="M50,350 Q300,200 550,450 T1050,250 T1550,550" fill="none" stroke="#F4FFFD" strokeWidth="1" />
-        </svg>
-    </div>
+  <div className="oo-topographic-container">
+    <svg width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-100,200 Q150,50 400,300 T900,100 T1400,400" fill="none" stroke="#000000" strokeWidth="1" />
+      <path d="M-50,250 Q200,100 450,350 T950,150 T1450,450" fill="none" stroke="#000000" strokeWidth="1" />
+      <path d="M0,300 Q250,150 500,400 T1000,200 T1500,500" fill="none" stroke="#000000" strokeWidth="1" />
+      <path d="M50,350 Q300,200 550,450 T1050,250 T1550,550" fill="none" stroke="#000000" strokeWidth="1" />
+    </svg>
+  </div>
 );
 
 const TrackCard = ({ title, subtitle, description, inView, delay, invertedArrow }) => {
-    return (
-        <div
-            className={`oo-track-card ${inView ? 'oo-card-in' : 'oo-card-out'}`}
-            style={{ transitionDelay: inView ? `${delay}ms` : '0ms' }}
-        >
-            <div className="oo-card-header">
-                <span className="oo-subtitle-accent">{subtitle}</span>
-                <h2 className="oo-title-text">{title}</h2>
-            </div>
-            <h3 className="oo-track-label">track</h3>
-            <p className="oo-description-text">{description}</p>
-            <button className="oo-track-button">
-                {invertedArrow ? <ArrowLeft size={24} /> : <ArrowRight size={24} />}
-            </button>
-        </div>
-    );
+  return (
+    <div
+      className={`oo-track-card ${inView ? 'oo-card-in' : 'oo-card-out'}`}
+      style={{ transitionDelay: inView ? `${delay}ms` : '0ms' }}
+    >
+      <div className="oo-card-header">
+        <span className="oo-subtitle-accent">{subtitle}</span>
+        <h2 className="oo-title-text">{title}</h2>
+      </div>
+      <h3 className="oo-track-label">server</h3>
+      <p className="oo-description-text">{description}</p>
+      <button className="oo-track-button">
+        {invertedArrow ? <ArrowLeft size={24} /> : <ArrowRight size={24} />}
+      </button>
+    </div>
+  );
 };
 
 export default function App() {
-    const [inView, setInView] = useState(false);
-    const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setInView(entry.isIntersecting);
-            },
-            {
-                threshold: 0.15,
-                rootMargin: "0px 0px -10% 0px"
-            }
-        );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px"
+      }
+    );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-        return () => observer.disconnect();
-    }, []);
+    return () => observer.disconnect();
+  }, []);
 
-    return (
-        <div className="oo-main-wrapper">
-            <style dangerouslySetInnerHTML={{
-                __html: `
+  return (
+    <div className="oo-main-wrapper">
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Playfair+Display:italic,wght@700&display=swap');
 
         :root {
-          --oo-color-bg-red: #ED3500;
-          --oo-color-accent-green: #5EE43A;
-          --oo-color-text-mint: #F4FFFD;
+          --oo-color-bg-red: #E8DBB3;
+          --oo-color-accent-green: #FFFFFF;
+          --oo-color-text-mint: #000000;
           --oo-color-neutral-dark: #333333;
         }
 
@@ -80,7 +83,7 @@ export default function App() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          background-color: white;
+          background-color: #E8DBB3;
           text-align: center;
           padding: 2.5rem;
         }
@@ -106,7 +109,7 @@ export default function App() {
         .oo-scroll-indicator {
           width: 1px;
           height: 8rem;
-          background-color: var(--oo-color-bg-red);
+          background-color: var(--oo-color-text-mint);
           border-radius: 999px;
           animation: oo-bounce 2s infinite;
         }
@@ -119,14 +122,14 @@ export default function App() {
         /* --- Track Section --- */
         .oo-track-section {
           position: relative;
-          min-height: 100vh;
+          height: 100vh;
           width: 100%;
           background-color: var(--oo-color-bg-red);
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          padding: 5rem 0;
+          box-sizing: border-box;
         }
 
         .oo-topographic-container {
@@ -154,8 +157,8 @@ export default function App() {
         @media (min-width: 768px) {
           .oo-content-container {
             flex-direction: row;
-            gap: 2rem;
-            justify-content: space-between;
+            gap: 10rem;
+            justify-content: center;
           }
         }
 
@@ -174,18 +177,22 @@ export default function App() {
         }
 
         .oo-image-left {
-          left: 0;
-          width: 320px;
+          left: 5vw;
+          width: 400px;
         }
 
-        @media (min-width: 1024px) { .oo-image-left { width: 380px; } }
+        @media (min-width: 1024px) { 
+          .oo-image-left { width: 500px; height: 100vh; left: 0; } 
+        }
 
         .oo-image-right {
-          right: 0;
-          width: 280px;
+          right: 5vw;
+          width: 360px;
         }
 
-        @media (min-width: 1024px) { .oo-image-right { width: 340px; } }
+        @media (min-width: 1024px) { 
+          .oo-image-right { width: 460px; height: 100vh; right: 0; } 
+        }
 
         .oo-img-asset {
           width: 100%;
@@ -196,7 +203,11 @@ export default function App() {
           box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .oo-img-asset:hover { filter: grayscale(0%); }
+        @media (min-width: 1024px) {
+          .oo-img-asset { height: 100vh; }
+        }
+
+        .oo-sliding-image:hover .oo-img-asset { filter: grayscale(0%); }
 
         .oo-image-left .oo-img-asset {
           mask-image: linear-gradient(to right, black 70%, transparent 100%);
@@ -209,9 +220,11 @@ export default function App() {
         /* Animation States for Images */
         .oo-in-view-left { transform: translateY(-50%) translateX(0); opacity: 1; }
         .oo-out-view-left { transform: translateY(-50%) translateX(-100%) scale(0.95); opacity: 0; }
+        .oo-in-view-left:hover { transform: translateY(-50%) translateX(-60px); }
         
         .oo-in-view-right { transform: translateY(-50%) translateX(0); opacity: 1; }
         .oo-out-view-right { transform: translateY(-50%) translateX(100%) scale(0.95); opacity: 0; }
+        .oo-in-view-right:hover { transform: translateY(-50%) translateX(60px); }
 
         /* --- Track Cards --- */
         .oo-track-card {
@@ -266,7 +279,7 @@ export default function App() {
         }
 
         .oo-description-text {
-          color: rgba(244, 255, 253, 0.8);
+          color: rgba(0, 0, 0, 0.80);
           font-size: 0.875rem;
           line-height: 1.625;
           margin-bottom: 2rem;
@@ -322,70 +335,70 @@ export default function App() {
         }
       `}} />
 
-            {/* SECTION 1: Intro */}
-            <div className="oo-intro-section">
-                <ScrollReveal
-                    baseOpacity={0.1}
-                    enableBlur
-                    baseRotation={6}
-                    blurStrength={7}
-                >
-                    But am I all about Coffee and Coding?
-                </ScrollReveal>
-                <div className="oo-scroll-indicator"></div>
-            </div>
+      {/* SECTION 1: Intro */}
+      <div className="oo-intro-section">
+        <ScrollReveal
+          baseOpacity={0.1}
+          enableBlur
+          baseRotation={15}
+          blurStrength={7}
+        >
+          But am I all about Coffee and Coding?
+        </ScrollReveal>
+        <div className="oo-scroll-indicator"></div>
+      </div>
 
-            {/* SECTION 2: The Track */}
-            <section ref={sectionRef} className="oo-track-section">
-                <TopographicLines />
+      {/* SECTION 2: The Track */}
+      <section ref={sectionRef} className="oo-track-section">
+        <TopographicLines />
 
-                <div className="oo-content-container">
+        <div className="oo-content-container">
 
-                    {/* Left Image */}
-                    <div className={`oo-sliding-image oo-image-left ${inView ? 'oo-in-view-left' : 'oo-out-view-left'}`}>
-                        <img
-                            src="https://images.unsplash.com/photo-1596727147705-61a532a75217?auto=format&fit=crop&q=80&w=1200"
-                            alt="Track Visual"
-                            className="oo-img-asset"
-                        />
-                    </div>
+          {/* Left Image */}
+          <div className={`oo-sliding-image oo-image-left ${inView ? 'oo-in-view-left' : 'oo-out-view-left'}`}>
+            <img
+              src="https://images.unsplash.com/photo-1541348263662-e06836164b2e?auto=format&fit=crop&q=80&w=1200"
+              alt="Track Visual"
+              className="oo-img-asset"
+            />
+          </div>
 
-                    <TrackCard
-                        title="ON"
-                        subtitle="on"
-                        description="High-performance snapshots from the edge. Exploring the intersection of data-driven racing and elite engineering."
-                        inView={inView}
-                        delay={300}
-                        invertedArrow={true}
-                    />
+          <TrackCard
+            title="ON"
+            subtitle="on"
+            description="High-performance deployments from the edge. Exploring the intersection of data-driven architecture and elite engineering."
+            inView={inView}
+            delay={300}
+            invertedArrow={true}
+          />
 
-                    <TrackCard
-                        title="OFF"
-                        subtitle="off"
-                        description="Behind the curtain. Creative campaigns, brand collaborations, and lifestyle content that defines the off-track legacy."
-                        inView={inView}
-                        delay={500}
-                        invertedArrow={false}
-                    />
+          <TrackCard
+            title="OFF"
+            subtitle="off"
+            description="Behind the curtain. Creative experiments, open-source collaborations, and side projects that define the off-server legacy."
+            inView={inView}
+            delay={500}
+            invertedArrow={false}
+          />
 
-                    {/* Right Image */}
-                    <div className={`oo-sliding-image oo-image-right ${inView ? 'oo-in-view-right' : 'oo-out-view-right'}`}>
-                        <img
-                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=1200"
-                            alt="Lifestyle Visual"
-                            className="oo-img-asset"
-                        />
-                    </div>
-
-                </div>
-
-                <div className="oo-vertical-branding">
-                    <div className="oo-v-line"></div>
-                    <span className="oo-v-text">Navneet Chronicles // 2024</span>
-                </div>
-            </section>
-
+          {/* Right Image */}
+          <div className={`oo-sliding-image oo-image-right ${inView ? 'oo-in-view-right' : 'oo-out-view-right'}`}>
+            <img
+              src={onserver}
+              alt="Lifestyle Visual"
+              className="oo-img-asset"
+            />
+          </div>
 
         </div>
-    );
+
+        <div className="oo-vertical-branding">
+          <div className="oo-v-line"></div>
+          <span className="oo-v-text">Navneet Chronicles // 2024</span>
+        </div>
+      </section>
+
+
+    </div>
+  );
 }
