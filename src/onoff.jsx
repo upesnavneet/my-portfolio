@@ -3,7 +3,8 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 import ScrollReveal from './components/ui/ScrollReveal/ScrollReveal';
 
-import onserver from '../src/assets/me/onserver.png'
+import onserver from '../src/assets/me/onserver1.jpeg'
+import offserver from '../src/assets/me/offserver.jpg'
 
 
 const TopographicLines = () => (
@@ -157,7 +158,7 @@ export default function App() {
         @media (min-width: 768px) {
           .oo-content-container {
             flex-direction: row;
-            gap: 10rem;
+            gap: 4rem;
             justify-content: center;
           }
         }
@@ -279,11 +280,11 @@ export default function App() {
         }
 
         .oo-description-text {
-          color: rgba(0, 0, 0, 0.80);
+          color: #000000ff;
           font-size: 0.875rem;
           line-height: 1.625;
           margin-bottom: 2rem;
-          font-weight: 500;
+          font-weight: 600;
         }
 
         .oo-track-button {
@@ -357,7 +358,7 @@ export default function App() {
           {/* Left Image */}
           <div className={`oo-sliding-image oo-image-left ${inView ? 'oo-in-view-left' : 'oo-out-view-left'}`}>
             <img
-              src="https://images.unsplash.com/photo-1541348263662-e06836164b2e?auto=format&fit=crop&q=80&w=1200"
+              src={onserver}
               alt="Track Visual"
               className="oo-img-asset"
             />
@@ -384,7 +385,7 @@ export default function App() {
           {/* Right Image */}
           <div className={`oo-sliding-image oo-image-right ${inView ? 'oo-in-view-right' : 'oo-out-view-right'}`}>
             <img
-              src={onserver}
+              src={offserver}
               alt="Lifestyle Visual"
               className="oo-img-asset"
             />
@@ -394,7 +395,7 @@ export default function App() {
 
         <div className="oo-vertical-branding">
           <div className="oo-v-line"></div>
-          <span className="oo-v-text">Navneet Chronicles // 2024</span>
+          <span className="oo-v-text">Navneet// Portfolio 2.1</span>
         </div>
       </section>
 
