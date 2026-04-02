@@ -10,6 +10,7 @@ import Navbar from "./components/ui/Navbar/CardNav";
 import Intro from "./intro"
 import Timeline from './timeline';
 import Onoff from './onoff';
+import Affiliations from "./affiliations";
 
 
 import logo from "./assets/Navbaricon/LOGO.png";
@@ -160,6 +161,7 @@ function App() {
         <Intro />
         <Timeline />
         <Onoff />
+        <Affiliations />
       </div>
     </>
   );
