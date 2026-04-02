@@ -44,7 +44,11 @@ export default function App() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setInView(true);
+        } else if (entry.boundingClientRect.top > 0) {
+          setInView(false);
+        }
       },
       {
         threshold: 0.15,
