@@ -11,6 +11,7 @@ import Intro from "./intro"
 import Timeline from './timeline';
 import Onoff from './onoff';
 import Affiliations from "./affiliations";
+import RevealSection from "./reveal";
 
 
 import logo from "./assets/Navbaricon/LOGO.png";
@@ -162,6 +163,7 @@ function App() {
         <Timeline />
         <Onoff />
         <Affiliations />
+        <RevealSection />
       </div>
     </>
   );
