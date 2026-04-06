@@ -1,10 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 import ScrollReveal from './components/ui/ScrollReveal/ScrollReveal';
 
 import onserver from '../src/assets/me/onserver1.jpeg'
 import offserver from '../src/assets/me/offserver.jpg'
+
+import onscrollimage from '../src/assets/me/onscroll.png'
 
 
 const TopographicLines = () => (
@@ -40,6 +46,9 @@ const TrackCard = ({ title, subtitle, description, inView, delay, invertedArrow 
 export default function App() {
   const [inView, setInView] = useState(false);
   const sectionRef = useRef(null);
+  const stackSectionRef = useRef(null);
+  const stackImageRef = useRef(null);
+  const pinWrapperRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,6 +70,29 @@ export default function App() {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (stackSectionRef.current && pinWrapperRef.current) {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          stackSectionRef.current,
+          { y: "100%" },
+          {
+            y: "0%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: pinWrapperRef.current,
+              start: "top top",
+              end: "+=150%",
+              pin: true,
+              scrub: true,
+            }
+          }
+        );
+      });
+      return () => ctx.revert();
+    }
   }, []);
 
   return (
@@ -127,6 +159,7 @@ export default function App() {
         /* --- Track Section --- */
         .oo-track-section {
           position: relative;
+          z-index: 10;
           height: 100vh;
           width: 100%;
           background-color: var(--oo-color-bg-red);
@@ -338,6 +371,32 @@ export default function App() {
           writing-mode: vertical-rl;
           text-orientation: mixed;
         }
+
+        /* --- Pin Wrapper --- */
+        .oo-pin-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100vh;
+          overflow: hidden;
+        }
+
+        /* --- Stack Section --- */
+        .oo-stack-section {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 20;
+          height: 100vh;
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .oo-full-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
       `}} />
 
       {/* SECTION 1: Intro */}
@@ -354,55 +413,66 @@ export default function App() {
       </div>
 
       {/* SECTION 2: The Track */}
-      <section ref={sectionRef} className="oo-track-section">
-        <TopographicLines />
+      <div ref={pinWrapperRef} className="oo-pin-wrapper">
+        <section ref={sectionRef} className="oo-track-section">
+          <TopographicLines />
 
-        <div className="oo-content-container">
+          <div className="oo-content-container">
 
-          {/* Left Image */}
-          <div className={`oo-sliding-image oo-image-left ${inView ? 'oo-in-view-left' : 'oo-out-view-left'}`}>
-            <img
-              src={onserver}
-              alt="Track Visual"
-              className="oo-img-asset"
+            {/* Left Image */}
+            <div className={`oo-sliding-image oo-image-left ${inView ? 'oo-in-view-left' : 'oo-out-view-left'}`}>
+              <img
+                src={onserver}
+                alt="Track Visual"
+                className="oo-img-asset"
+              />
+            </div>
+
+            <TrackCard
+              title="ON"
+              subtitle="on"
+              description="High-performance deployments from the edge. Exploring the intersection of data-driven architecture and elite engineering."
+              inView={inView}
+              delay={300}
+              invertedArrow={true}
             />
+
+            <TrackCard
+              title="OFF"
+              subtitle="off"
+              description="Behind the curtain. Creative experiments, open-source collaborations, and side projects that define the off-server legacy."
+              inView={inView}
+              delay={500}
+              invertedArrow={false}
+            />
+
+            {/* Right Image */}
+            <div className={`oo-sliding-image oo-image-right ${inView ? 'oo-in-view-right' : 'oo-out-view-right'}`}>
+              <img
+                src={offserver}
+                alt="Lifestyle Visual"
+                className="oo-img-asset"
+              />
+            </div>
+
           </div>
 
-          <TrackCard
-            title="ON"
-            subtitle="on"
-            description="High-performance deployments from the edge. Exploring the intersection of data-driven architecture and elite engineering."
-            inView={inView}
-            delay={300}
-            invertedArrow={true}
-          />
-
-          <TrackCard
-            title="OFF"
-            subtitle="off"
-            description="Behind the curtain. Creative experiments, open-source collaborations, and side projects that define the off-server legacy."
-            inView={inView}
-            delay={500}
-            invertedArrow={false}
-          />
-
-          {/* Right Image */}
-          <div className={`oo-sliding-image oo-image-right ${inView ? 'oo-in-view-right' : 'oo-out-view-right'}`}>
-            <img
-              src={offserver}
-              alt="Lifestyle Visual"
-              className="oo-img-asset"
-            />
+          <div className="oo-vertical-branding">
+            <div className="oo-v-line"></div>
+            <span className="oo-v-text">Navneet// Portfolio 2.1</span>
           </div>
+        </section>
 
-        </div>
-
-        <div className="oo-vertical-branding">
-          <div className="oo-v-line"></div>
-          <span className="oo-v-text">Navneet// Portfolio 2.1</span>
-        </div>
-      </section>
-
+        {/* SECTION 3: Stacking Image */}
+        <section ref={stackSectionRef} className="oo-stack-section">
+          <img
+            ref={stackImageRef}
+            src={onscrollimage}
+            alt="Stacking Visual"
+            className="oo-full-image"
+          />
+        </section>
+      </div>
 
     </div>
   );
