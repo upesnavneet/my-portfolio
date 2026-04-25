@@ -11,6 +11,7 @@ import Intro from "./intro"
 import Timeline from './timeline';
 import Onoff from './onoff';
 import Affiliations from "./affiliations";
+import Origins from "./location";
 
 
 import logo from "./assets/Navbaricon/LOGO.png";
@@ -161,7 +162,9 @@ function App() {
         <Intro />
         <Timeline />
         <Onoff />
+        <Origins />
         <Affiliations />
+
       </div>
     </>
   );
