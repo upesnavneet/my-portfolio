@@ -13,6 +13,8 @@ import Onoff from './onoff';
 import Affiliations from "./affiliations";
 import Origins from "./location";
 import ParallaxGallery from "./ParallaxGallery";
+import TechStack from "./TechStack";
+import FlowingMenuSection from "./FlowingMenuSection";
 
 import logo from "./assets/Navbaricon/LOGO.png";
 
@@ -53,8 +55,8 @@ function App() {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     }
-    return () => { 
-      document.body.style.overflow = ''; 
+    return () => {
+      document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
     };
   }, [videoPlaying]);
@@ -169,6 +171,8 @@ function App() {
         <Onoff />
         <Origins />
         <ParallaxGallery />
+        <TechStack />
+        <FlowingMenuSection />
         <Affiliations />
       </div>
     </>

@@ -50,7 +50,7 @@ export default function ParallaxGallery() {
         y: '0%', ease: 'none',
         scrollTrigger: { trigger: containerRef.current, start: 'top bottom', end: 'bottom bottom', scrub: true }
       });
-      
+
       // Header Text Parallax
       gsap.fromTo(titleTopRef.current, { y: -50 }, {
         y: 50, ease: 'none',
@@ -292,7 +292,7 @@ export default function ParallaxGallery() {
           <h2 className="pg-title-bottom" ref={titleBottomRef}>HALL OF FAME</h2>
         </div>
         <div className="pg-header-desc" ref={descRef}>
-          <p className="pg-header-subtitle">If it worked, I built it. If it broke, I fixed it. (all technical btw)</p>
+          <p className="pg-header-subtitle">If it worked, I built it. If it broke, I fixed it.<br></br> (all technical btw)</p>
         </div>
       </div>
 

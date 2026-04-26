@@ -1,0 +1,47 @@
+.img-marquee-parallax {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 0;
+}
+
+.img-marquee-scroller {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    gap: 0;
+    font-size: 0;
+}
+
+.img-marquee-scroller span {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+}
+
+.img-marquee-scroller span img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.7);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+}
+
+.img-marquee-scroller span img:hover {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+    .img-marquee-scroller span img {
+        height: 55px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .img-marquee-scroller span img {
+        height: 65px;
+    }
+}
