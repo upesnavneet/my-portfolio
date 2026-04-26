@@ -12,7 +12,7 @@ import Timeline from './timeline';
 import Onoff from './onoff';
 import Affiliations from "./affiliations";
 import Origins from "./location";
-
+import ParallaxGallery from "./ParallaxGallery";
 
 import logo from "./assets/Navbaricon/LOGO.png";
 
@@ -48,10 +48,15 @@ function App() {
   useEffect(() => {
     if (videoPlaying) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => { 
+      document.body.style.overflow = ''; 
+      document.documentElement.style.overflow = '';
+    };
   }, [videoPlaying]);
 
   // Initialize Lenis only after video is done
@@ -163,8 +168,8 @@ function App() {
         <Timeline />
         <Onoff />
         <Origins />
+        <ParallaxGallery />
         <Affiliations />
-
       </div>
     </>
   );

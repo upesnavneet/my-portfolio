@@ -6,21 +6,21 @@ import SplitText from './components/ui/SplitText/SplitText';
 /**
  * REFINED ORIGINS COMPONENT
  * Features: High-impact typography, grid layout.
- * Colors: #ED3500 (Background) | #F4FFFD (Text) | #5EE43A (Accent)
+ * Colors: Black and White styling
  * Focus: Highlighting Patna roots and Dehradun education.
  */
 
 export default function App() {
-    return (
-        <div className="portfolio-root">
-            <style dangerouslySetInnerHTML={{
-                __html: `
+  return (
+    <div className="portfolio-root">
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
         :root {
-          --color-bg-dark: #12161D;
-          --color-accent-green: #FDB04D;
-          --color-text-mint: #FDB04D;
+          --color-bg-dark: #0a0a0a;
+          --color-accent: #ffffff;
+          --color-text-main: #ffffff;
         }
 
         body, html {
@@ -38,142 +38,145 @@ export default function App() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 4vh 40px; /* Use vh for dynamic padding */
-          color: var(--color-text-mint);
+          padding: 15vh 12vw;
+          color: var(--color-text-main);
           box-sizing: border-box;
           background-color: var(--color-bg-dark);
+          background-image: 
+            radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
           overflow: hidden;
         }
 
         .origins-content {
           position: relative;
           z-index: 10;
-          max-width: 1500px; /* Increased to push right container further right */
+          max-width: 1200px;
           width: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: center; /* Center to avoid pushing out of bounds */
+          justify-content: space-between;
           height: 100%;
-          gap: 3vh; /* Dynamic gap */
+          gap: 3vh;
         }
 
         .narrative-block {
           align-self: flex-start;
           max-width: 800px;
           width: 100%;
-          margin-left: 8vw; /* Shifted more towards the right */
+          margin-left: 0;
+        }
+
+        .college-block {
+          align-self: flex-end;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+
+        .college-card {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 20px 30px;
+          border-radius: 16px;
+          backdrop-filter: blur(10px);
+          transition: all 0.4s ease;
+          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+          cursor: default;
+        }
+
+        .college-card:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.3);
+          transform: translateY(-5px);
+          box-shadow: 0 15px 40px -10px rgba(255, 255, 255, 0.1);
+        }
+
+        .college-icon {
+          color: #000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #FFF;
+          width: 55px;
+          height: 55px;
+          border-radius: 14px;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .college-info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: right;
+        }
+
+        .college-name {
+          font-size: clamp(1rem, 2.5vh, 1.3rem);
+          font-weight: 700;
+          color: #FFF;
+          margin: 0 0 4px 0;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+        }
+
+        .college-major {
+          font-size: clamp(0.8rem, 1.8vh, 1rem);
+          color: rgba(255, 255, 255, 0.6);
+          margin: 0 0 4px 0;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+        }
+
+        .college-year {
+          font-size: clamp(0.75rem, 1.5vh, 0.9rem);
+          color: #FFF;
+          margin: 0;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          opacity: 0.9;
         }
 
         .location-tag {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          font-weight: 500; /* Reduced weight */
+          font-weight: 600; 
           text-transform: uppercase;
-          letter-spacing: 0.25em;
-          font-size: clamp(0.6rem, 1.5vh, 0.75rem);
-          margin-bottom: 2vh;
-          color: var(--color-accent-green);
-          background: rgba(94, 228, 58, 0.1);
-          padding: 6px 16px;
+          letter-spacing: 0.2em;
+          font-size: clamp(0.7rem, 1.5vh, 0.85rem);
+          margin-bottom: 3vh;
+          color: #000;
+          background: #FFF;
+          padding: 8px 20px;
           border-radius: 50px;
-          border: 1px solid rgba(94, 228, 58, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         .big-heading {
-          font-size: clamp(1.8rem, 5vh, 3.5rem); /* Reduced significantly */
-          font-weight: 700; /* Reduced weight from 900 to 700 */
-          font-style: italic; /* Added italic */
+          font-size: clamp(1.8rem, 5vh, 3.5rem);
+          font-weight: 700;
+          font-style: italic;
           line-height: 0.95;
           text-transform: uppercase;
           letter-spacing: -0.04em;
           margin: 0 0 1.5vh 0;
-          text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+          text-shadow: 2px 4px 10px rgba(0,0,0,0.8);
+          color: #FFF;
         }
 
         .bio-text {
           font-size: clamp(0.85rem, 2vh, 1rem);
           line-height: 1.5;
-          opacity: 0.9;
+          opacity: 0.7;
           font-weight: 400;
           max-width: 500px;
           letter-spacing: 0.01em;
           margin: 0;
-        }
-
-        .edu-grid {
-          align-self: flex-end;
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          width: 100%;
-          max-width: 350px;
-          margin-top: 2vh;
-        }
-
-        .edu-item {
-          border-left: 2px solid rgba(244, 255, 253, 0.1);
-          padding-left: 20px;
-          padding-bottom: 15px; /* Reduced for vertical fit */
-          position: relative;
-          transition: all 0.3s ease;
-        }
-        
-        .edu-item:last-child {
-          padding-bottom: 0;
-          border-left-color: transparent;
-        }
-
-        .edu-item::before {
-          content: '';
-          position: absolute;
-          left: -5px;
-          top: 4px;
-          width: 8px;
-          height: 8px;
-          background-color: var(--color-bg-dark);
-          border: 2px solid rgba(244, 255, 253, 0.2);
-          border-radius: 50%;
-          transition: all 0.3s ease;
-        }
-
-        .edu-item:hover::before {
-          border-color: var(--color-accent-green);
-          background-color: var(--color-accent-green);
-          box-shadow: 0 0 10px rgba(94, 228, 58, 0.4);
-        }
-
-        .edu-item h4 {
-          font-size: clamp(0.8rem, 2vh, 0.95rem);
-          font-weight: 700;
-          text-transform: lowercase;
-          margin: 0 0 2px 0;
-          letter-spacing: 0.02em;
-          color: var(--color-text-mint);
-        }
-
-        .edu-item p {
-          opacity: 0.65;
-          font-size: clamp(0.55rem, 1.2vh, 0.65rem);
-          margin: 0;
-          text-transform: lowercase;
-          letter-spacing: 0.05em;
-          font-weight: 500;
-        }
-
-        .edu-icon-wrapper {
-          position: relative;
-          left: -20px;
-          margin-bottom: 1.5vh;
-          color: var(--color-accent-green);
-          background: rgba(94, 228, 58, 0.1);
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 12px;
-          border: 1px solid rgba(94, 228, 58, 0.2);
         }
 
         @media (max-width: 1024px) {
@@ -184,46 +187,84 @@ export default function App() {
             overflow: visible;
           }
           .origins-content { 
-            justify-content: flex-start;
+            justify-content: space-between;
             height: auto;
-            gap: 30px;
+            min-height: calc(100vh - 80px);
+            gap: 50px;
           }
           .narrative-block {
-            margin-bottom: 40px;
-            margin-left: 0; /* Reset for mobile */
+            margin-bottom: 20px;
+            margin-left: 0;
           }
-          .edu-grid {
+          .college-block {
             align-self: flex-start;
+          }
+          .college-card {
+            width: 100%;
+            justify-content: flex-start;
+          }
+          .college-info {
+            align-items: flex-start;
+            text-align: left;
           }
         }
       `}} />
 
-            <section className="origins-section">
-                <motion.div
-                    className="origins-content"
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    {/* Main Content Area */}
-                    <div className="narrative-block">
-                        <SplitText
-                            text="From Dehradun... That's what it is like studying in UPES Dehradun."
-                            className="big-heading"
-                            delay={25}
-                            duration={1.2}
-                            ease="power3.out"
-                            splitType="chars"
-                            from={{ opacity: 0, y: 40 }}
-                            to={{ opacity: 1, y: 0 }}
-                            threshold={0.1}
-                            rootMargin="-50px"
-                            textAlign="left"
-                        />
-                    </div>
-                </motion.div>
-            </section>
-        </div>
-    );
+      <section className="origins-section">
+        <motion.div
+          className="origins-content"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {/* Main Content Area */}
+          <div className="narrative-block">
+            <motion.div
+              className="location-tag"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <MapPin size={16} /> Dehradun, India
+            </motion.div>
+            <SplitText
+              text="Based in Dehradun, crafting solutions that scale beyond it."
+              className="big-heading"
+              delay={25}
+              duration={1.2}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-50px"
+              textAlign="left"
+            />
+          </div>
+
+          {/* Bottom Right College Info */}
+          <motion.div
+            className="college-block"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <div className="college-card">
+              <div className="college-icon">
+                <GraduationCap size={28} />
+              </div>
+              <div className="college-info">
+                <h3 className="college-name">UPES Dehradun</h3>
+                <p className="college-major">Data Science</p>
+                <p className="college-year">Class of 2024 &mdash; 2028</p>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+    </div>
+  );
 }
