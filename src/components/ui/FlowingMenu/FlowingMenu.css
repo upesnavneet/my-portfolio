@@ -93,7 +93,6 @@
     margin: 2em 2vw;
     padding: 1em 0;
     border-radius: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: 50% 50%;
 }

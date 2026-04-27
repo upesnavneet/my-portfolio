@@ -10,11 +10,12 @@ import Navbar from "./components/ui/Navbar/CardNav";
 import Intro from "./intro"
 import Timeline from './timeline';
 import Onoff from './onoff';
-import Affiliations from "./affiliations";
 import Origins from "./location";
 import ParallaxGallery from "./ParallaxGallery";
 import TechStack from "./TechStack";
 import FlowingMenuSection from "./FlowingMenuSection";
+import Footer from "./Footer";
+import CustomScrollbar from "./CustomScrollbar";
 
 import logo from "./assets/Navbaricon/LOGO.png";
 
@@ -133,6 +134,7 @@ function App() {
 
   return (
     <>
+      <CustomScrollbar />
       {/* Intro Video Overlay */}
       {videoPlaying && (
         <div className={`intro-video-overlay ${videoFading ? 'fade-out' : ''}`}>
@@ -173,7 +175,7 @@ function App() {
         <ParallaxGallery />
         <TechStack />
         <FlowingMenuSection />
-        <Affiliations />
+        <Footer />
       </div>
     </>
   );

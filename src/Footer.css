@@ -1,0 +1,265 @@
+/* ===================== FOOTER WRAPPER (mirrors .xray-wrapper) ===================== */
+/* ===================== FOOTER OUTER & WRAPPER ===================== */
+.footer-outer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #FFFFFF, #14376a);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 1.5vw 1.5vw 1.5vw;
+    /* creates the border effect left, right, bottom */
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.footer-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #14376a;
+    border-radius: 0 0 60px 60px;
+    /* matched rounded corners at bottom */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================== MARQUEE BG (mirrors .scroll-bg) ===================== */
+.footer-marquee-bg {
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.footer-marquee-parallax {
+    position: relative;
+    overflow: hidden;
+    padding: 8px 0;
+}
+
+.footer-marquee-scroller {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    gap: 0;
+    font-size: 0;
+}
+
+.footer-marquee-scroller span {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+}
+
+.footer-marquee-scroller span img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.2);
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    margin: 0 12px;
+}
+
+.footer-marquee-scroller span img:hover {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* ===================== PHOTO (mirrors .xray-image) ===================== */
+.footer-photo {
+    position: absolute;
+    bottom: -11vh;
+    left: 50%;
+    transform: translateX(-52%);
+    z-index: 2;
+    height: 80vh;
+    width: 100vw;
+    max-width: 90vw;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+/* ===================== TEXT OVERLAY ===================== */
+.footer-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15vh 0 0;
+    /* Shifted slightly downwards */
+    /* Removed horizontal padding to prevent width overflow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    /* Placed behind the image (which is z-index 2) */
+    box-sizing: border-box;
+}
+
+.footer-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-weight: 900;
+    color: #FFF;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.03em;
+}
+
+.footer-title-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 4.5rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 0.85;
+    margin-top: 0.1em;
+}
+
+/* ===================== SIDE COLUMNS (PAGES & SOCIALS) ===================== */
+.footer-side-col {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 4;
+}
+
+.footer-col-left {
+    left: 10vw;
+}
+
+.footer-col-right {
+    right: 10vw;
+}
+
+.footer-col-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-col-label::before,
+.footer-col-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-col-label::before {
+    right: 100%;
+    margin-right: 8px;
+}
+
+.footer-col-label::after {
+    left: 100%;
+    margin-left: 8px;
+}
+
+.footer-col-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+    font-weight: 800;
+    color: #FFF;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-col-link:hover {
+    color: #CCFF00;
+    /* Neon yellow/green from the image */
+    transform: scale(1.05);
+}
+
+.footer-col-highlight {
+    color: #CCFF00;
+    margin-top: 1rem;
+}
+
+/* ===================== BOTTOM BAR ===================== */
+.footer-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 3vw 0.1vw 0;
+    /* Aligned to bottom right with right padding */
+    text-align: right;
+    z-index: 15;
+    /* Above the outer gradient */
+    border-top: none;
+    box-sizing: border-box;
+}
+
+.footer-copyright {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    /* "Dark white" color */
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .footer-top {
+        padding: 5vh 4vw 0;
+    }
+
+    .footer-marquee-scroller span img {
+        height: 30px;
+        margin: 0 8px;
+    }
+
+    .footer-side-col {
+        top: 60%;
+        transform: translateY(-50%);
+    }
+
+    .footer-col-left {
+        left: 5vw;
+    }
+
+    .footer-col-right {
+        right: 5vw;
+    }
+
+    .footer-col-link {
+        font-size: clamp(0.9rem, 1.2vw, 1.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-side-col {
+        top: 75%;
+    }
+}
