@@ -9,7 +9,6 @@ const menuItems = [
     { link: '#', text: 'ACM', image: acmlogo },
     { link: '#', text: 'Bitwit-technologies', image: bitwittechno },
     { link: '#', text: 'Contact', image: 'https://picsum.photos/600/400?random=12' },
-    { link: '#', text: 'Resume', image: 'https://picsum.photos/600/400?random=13' },
 ];
 
 function FlowingMenuSection() {

@@ -2,6 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import ladyada from './assets/events/ladyada.jpg'
+import ladyada1 from './assets/events/ladyada1.jpg'
+import AICWiC from './assets/events/AICWiC.jpg'
+import AICWiC1 from './assets/events/AICWiC1.jpg'
+import HOAI from './assets/events/HOAI.jpg'
+import HOAI1 from './assets/events/HOAI1.jpg'
+import GGJ from './assets/events/GGJ.jpeg'
+import GGJ1 from './assets/events/GGJ1.png'
+
 gsap.registerPlugin(ScrollTrigger);
 
 const generateItems = (startIdx, count) => {
@@ -17,10 +26,46 @@ const generateItems = (startIdx, count) => {
   });
 };
 
-const col1Items = generateItems(0, 4);
-const col2Items = generateItems(4, 4);
-const col3Items = generateItems(8, 4);
-const col4Items = generateItems(12, 4);
+const col1Items = [
+  {
+    id: 0,
+    src1: ladyada1,
+    src2: ladyada,
+    title: "LadyAda",
+    year: "2025"
+  },
+  ...generateItems(1, 3)
+];
+const col2Items = [
+  {
+    id: 4,
+    src1: AICWiC1,
+    src2: AICWiC,
+    title: "AICWiC",
+    year: "2025"
+  },
+  ...generateItems(5, 3)
+];
+const col3Items = [
+  {
+    id: 8,
+    src1: HOAI1,
+    src2: HOAI,
+    title: "HOAI",
+    year: "2025"
+  },
+  ...generateItems(9, 3)
+];
+const col4Items = [
+  {
+    id: 12,
+    src1: GGJ1,
+    src2: GGJ,
+    title: "GGJ",
+    year: "2024"
+  },
+  ...generateItems(13, 3)
+];
 
 export default function ParallaxGallery() {
   const containerRef = useRef(null);
