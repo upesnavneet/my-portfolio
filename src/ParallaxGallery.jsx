@@ -10,6 +10,11 @@ import HOAI from './assets/events/HOAI.jpg'
 import HOAI1 from './assets/events/HOAI1.jpg'
 import GGJ from './assets/events/GGJ.jpeg'
 import GGJ1 from './assets/events/GGJ1.png'
+import protorush1 from './assets/events/protorush1.jpg'
+import protorush2 from './assets/events/protorush.jpg'
+import ICPC from './assets/events/ICPC.jpg'
+import ICPC1 from './assets/events/ICPC1.jpg'
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,7 +39,14 @@ const col1Items = [
     title: "LadyAda",
     year: "2025"
   },
-  ...generateItems(1, 3)
+  {
+    id: 1,
+    src1: protorush1,
+    src2: protorush2,
+    title: "ProtoRush",
+    year: "2026"
+  },
+  ...generateItems(2, 2)
 ];
 const col2Items = [
   {
@@ -44,7 +56,14 @@ const col2Items = [
     title: "AICWiC",
     year: "2025"
   },
-  ...generateItems(5, 3)
+  {
+    id: 5,
+    src1: ICPC1,
+    src2: ICPC,
+    title: "ICPC",
+    year: "2025"
+  },
+  ...generateItems(6, 2)
 ];
 const col3Items = [
   {
